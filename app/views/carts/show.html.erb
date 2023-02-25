@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+<p><b>Book:</b> <%= find_book_name(@cart.book_id)%></p>
+<%= render @cart %>
+
+<div>
+  <%= link_to "Edit this Item", edit_cart_path(@cart) %> |
+  <%= link_to "Back to Books", books_path %>
+
+  <%= button_to "Remove this Item", @cart, method: :delete %>
+</div>

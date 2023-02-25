@@ -1,0 +1,25 @@
+<p id=”notice”><%= notice %></p>
+<h1>Book Shopping System</h1>
+<p>Purchase books at the snap of your finger</p>
+<% if current_user %>
+  <%= current_user.name %> Logged in as <%= current_user.username %>
+  <br><br>
+
+  <% if current_user.is_admin == 1 %>
+    <%= link_to "User Profile", user_path(current_user) %><br>
+    <%= link_to 'All Users', users_path %> <br>
+    <%= link_to 'All Transactions', transactions_path %> <br>
+  <% else %>
+    <%= link_to "User Profile", user_path(current_user) %><br>
+    <%= link_to 'User Transactions', transactions_path(:user_id => current_user.id) %> <br>
+  <% end %>
+
+  <%= link_to 'View all Books', books_path %><br>
+  <%= link_to "Book Reviews" ,reviews_path %><br><br>
+
+  <%= link_to "Logout", logout_path %>
+
+<% else %>
+  <%= link_to "Signup", signup_path %> or
+  <%= link_to "Login", login_path %>
+<% end %>

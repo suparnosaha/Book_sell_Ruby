@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @transaction %>
+<% @carts.each do |cart| %>
+  <br>
+  <p><b>Book Name:</b> <%= find_book_name(cart.book_id) %></p>
+  <p><b>Quantity:</b> <%= cart.quantity %></p>
+  <p><b>Total cost of this book:</b> <%= cart.total_cost %></p>
+<% end %>
+
+<div>
+ 
+  <%= link_to "Back to all books", books_path %>
+
+</div>

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @user %>
+
+<div>
+  <%= link_to "Edit Profile", edit_user_path(@user) %>
+
+  <% if current_user.is_admin == 1 %>
+    | <%= link_to 'View All Users', users_path %>
+  <% end %>
+
+  <% if @user.is_admin != 1 %>
+    <%= button_to "Delete this User", @user, method: :delete %>
+  <% end %>
+
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookShoppingSystem</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   
+  </head>
+
+  <body>
+  <div style="text-align: left; float: left;">
+    <%= link_to 'Home page', root_path%>
+  </div>
+  <div style="text-align: right; float: right;">
+    <%= link_to 'Cart', carts_path %>
+  </div>
+  <br>
+  <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Cart</h1>
+<h3>Your cart contains the following items:</h3>
+
+<div id="carts">
+  <% if @carts.present? %>
+    <% @carts.each do |cart| %>
+        <p><b>Book:</b> <%= find_book_name(cart.book_id)%></p>
+        <%= render cart %>
+        <p><%= link_to "Show this book", cart %></p>
+    <% end %>
+    <%= link_to "Checkout", new_transaction_path %>
+  <% end %>
+</div>
+
+<%#= link_to "New cart", new_cart_path %>

@@ -1,0 +1,23 @@
+<div id="<%= dom_id review %>">
+
+  <p>
+    <strong>Reviewer Name:</strong>
+    <%= find_user_name(review.user_id) %>
+  </p>
+
+  <p>
+    <strong>Book Name:</strong>
+    <%= find_book_name(review.book_id) %>
+  </p>
+
+  <p>
+    <strong>Rating:</strong>
+    <%= review.rating %>
+  </p>
+
+  <p>
+    <strong>Review:</strong>
+    <%= review.review %>
+  </p>
+
+</div>

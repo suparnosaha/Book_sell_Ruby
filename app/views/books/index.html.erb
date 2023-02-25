@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Books</h1>
+<h3>Search By Bookname</h3>
+<%= form_tag books_path, :method => 'get' do %>
+<%= text_field_tag :name, params[:name]%>
+  <%= submit_tag "Search" %>
+<%end%>
+
+<h3>Search By Author</h3>
+<%= form_tag books_path, :method => 'get' do %>
+<%= text_field_tag :author, params[:author]%>
+  <%= submit_tag "Search" %>
+<%end%>
+
+<h3>Search By Rating</h3>
+<%= form_tag books_path, :method => 'get' do %>
+  <%#= label_tag :filter_by_average_rating%>
+  <%= select_tag :rating, options_for_select([0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5]), include_blank: true %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+    <p>
+      <%= link_to "Show this Book", book %>
+      <br><br>
+  <% if book.id %>
+    <%= link_to_if book.stock > 0, 'Add Book to Cart', check_carts_path(:book_id => book.id) %>
+  <% end%>
+    </p>
+  <% end %>
+</div>
+
+<% if current_user.is_admin && current_user.is_admin == 1%>
+    <%= link_to "New book", new_book_path %>
+<% end %>
+

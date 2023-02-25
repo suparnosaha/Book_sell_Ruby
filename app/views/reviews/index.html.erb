@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Reviews</h1>
+<h3>Search By Username</h3>
+<%= form_tag reviews_path, :method => 'get' do %>
+<%= text_field_tag :search1, params[:user]%>
+  <%= submit_tag "Search" %>
+<%end%>
+<br><br>
+<h3>Search By Bookname</h3>
+<%= form_tag reviews_path, :method => 'get' do %>
+<%= text_field_tag :search, params[:book]%>
+  <%= submit_tag "Search" %>
+<%end%>
+<div id="reviews">
+<br>
+<%= link_to "My Reviews" ,reviews_path(:user_id => current_user.id) , class: "btn btn-primary" %><br>
+  
+  <%if @reviews.nil?%>
+    <h3>No Reviews match the search criteria</h3>
+    <%else%>
+    <% if @matchUserName.nil? && @matchBookName.nil?%>
+    <h3>All Reviews</h3>
+    <% elsif @matchUserName.nil?%>
+    <h3> Reviews for book - <%=@matchBookName.name%></h3>
+    <% else%>
+    <h3> Reviews made by User - <%=@matchUserName.username%></h3>
+    <%end%>
+    <% @reviews.each do |review| %>
+    <%= render review %>
+    <p>
+      <%= link_to "Show this review", review %>
+    </p>
+    
+    <%end%>
+  <% end %>
+</div>
+
